@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['bio', 'skills']
+        fields = ['interests', 'skills']  # ✅ changed from 'bio' to 'interests'
 
 class EventSerializer(serializers.ModelSerializer):
     organizer = UserSerializer(read_only=True)

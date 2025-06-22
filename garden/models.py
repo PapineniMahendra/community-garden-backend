@@ -1,12 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from django.contrib.auth.models import User
-from django.db import models
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(blank=True, null=True)
+    interests = models.TextField(blank=True, null=True)  # correct
     skills = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
@@ -24,6 +21,9 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+    def is_full(self):
+        return self.participation_set.count() >= self.capacity
+
 class Participation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -31,6 +31,9 @@ class Participation(models.Model):
 
     class Meta:
         unique_together = ('user', 'event')
+
+    def __str__(self):
+        return f"{self.user.username} joined {self.event.title}"
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
