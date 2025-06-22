@@ -65,20 +65,14 @@ Edit
 git clone https://github.com/yourusername/community-garden-app.git
 cd community-garden-app
 2. 🧰 Create Virtual Environment & Activate
-bash
-Copy
-Edit
+
 python -m venv venv
 source venv/bin/activate   # For Windows: venv\Scripts\activate
 3. 📦 Install Dependencies
-bash
-Copy
-Edit
+
 pip install -r requirements.txt
 4. 🗄️ Apply Migrations
-bash
-Copy
-Edit
+
 python manage.py makemigrations
 python manage.py migrate
 5. 👤 Create a Superuser
@@ -87,9 +81,7 @@ Copy
 Edit
 python manage.py createsuperuser
 6. 🚀 Run the Server
-bash
-Copy
-Edit
+
 python manage.py runserver
 Now go to:
 
@@ -102,9 +94,6 @@ Obtain token:
 POST /api/token/
 Body:
 
-json
-Copy
-Edit
 {
   "username": "yourusername",
   "password": "yourpassword"
@@ -113,8 +102,6 @@ Use returned access token in all requests:
 Header:
 
 makefile
-Copy
-Edit
 Authorization: Bearer <access_token>
 📬 API Endpoints (Examples)
 Endpoint	Method	Description
@@ -127,14 +114,10 @@ Endpoint	Method	Description
 /api/notifications/	GET	Get notifications
 
 🧪 Running Tests
-bash
-Copy
-Edit
 python manage.py test
 📄 Environment Variables (.env)
 ini
-Copy
-Edit
+
 SECRET_KEY=your-django-secret-key
 DEBUG=True
 ✅ Since you're using SQLite, DB credentials are not needed.
